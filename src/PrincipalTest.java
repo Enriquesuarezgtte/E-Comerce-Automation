@@ -46,22 +46,39 @@ public class PrincipalTest extends Capabilities{
     Assert.assertTrue(loginPage.getToastMessage().contains("Please enter your name"));
   }
 
-
+  @Test
   public void addProductCartTest() throws InterruptedException {
-    this.products.add("Air Jordan 4 Retro"); this.products.add("Nike SFB Jungle");
+    this.products.add("Air Jordan 4 Retro"); this.products.add("PG 3");
     productPage.selectProduct(this.products);
     productPage.goToCart();
     verifyPurchase();
-    verifyAmount();
+    readTermsOfConditions();
+    checkBoxAndVisitWebsite();
   }
 
+  private void webView() {
+    changeDriverContext();
+  }
 
-	private void verifyAmount() {
+  private void changeDriverContext() {
+    this.driver.context((String) driver.getContextHandles().toArray()[1]);
+  }
+
+  private void checkBoxAndVisitWebsite() {
+    productPage.checkAndGoToWeb();
+    webView();
+  }
+
+  private void verifyPurchase() {
+    Assert.assertTrue(cartPage.getProductToPurchase().equals(this.products));
+    verifyAmount();
+  }
+  private void verifyAmount() {
     Assert.assertEquals(cartPage.getProductPricesToPurchase(),cartPage.getTotalPurchaseAmount());
   }
 
-  public void verifyPurchase() {
-    Assert.assertTrue(cartPage.getProductToPurchase().equals(this.products));
+  private void readTermsOfConditions() {
+    Assert.assertEquals(cartPage.readTermsOfConditions(), "Terms Of Conditions");
   }
 
   @After

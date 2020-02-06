@@ -41,4 +41,9 @@ public class ProductPage{
 	public void goToCart() {
     driver.findElementById("com.androidsample.generalstore:id/appbar_btn_cart").click();
 	}
+
+	public void checkAndGoToWeb() {
+    driver.findElementByClassName("android.widget.CheckBox").click();
+    driver.findElementById("com.androidsample.generalstore:id/btnProceed").click();
+  }
 }
