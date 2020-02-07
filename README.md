@@ -1,2 +1,2 @@
-# Appium-Template
-Template for appium project with java client and junit
+# E-commerce project to automated tests with Appium
+
