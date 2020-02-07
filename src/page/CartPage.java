@@ -2,7 +2,6 @@ package page;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static io.appium.java_client.touch.offset.ElementOption.element;

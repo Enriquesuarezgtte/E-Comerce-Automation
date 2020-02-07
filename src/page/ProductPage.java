@@ -2,19 +2,16 @@ package page;
 
 import java.util.ArrayList;
 import java.util.List;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 public class ProductPage{
 
   private AndroidDriver<AndroidElement> driver;
-  private TouchAction touch;
   private List<String> productNames;
 
   public ProductPage(AndroidDriver<AndroidElement> driver){
     this.driver = driver;
-    this.touch = new TouchAction<>(driver);
     this.productNames = new ArrayList<>();
   }
 
