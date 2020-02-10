@@ -3,6 +3,8 @@ import io.appium.java_client.android.AndroidElement;
 import page.CartPage;
 import page.LoginPage;
 import page.ProductPage;
+import page.WebViewPage;
+
 import static java.time.Duration.ofSeconds;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class PrincipalTest extends Capabilities{
   private ProductPage productPage;
   private CartPage cartPage;
   private List<String> products =new ArrayList<>();
+  private WebViewPage webViewPage;
 
 	@Before
 	public void setUp() throws MalformedURLException {
@@ -27,6 +30,7 @@ public class PrincipalTest extends Capabilities{
   loginPage = new LoginPage(driver);
   productPage = new ProductPage(driver);
   cartPage = new CartPage(driver);
+  webViewPage = new WebViewPage(driver);
 	}
 
 	@Test
@@ -57,12 +61,10 @@ public class PrincipalTest extends Capabilities{
   }
 
   private void webView() {
-    changeDriverContext();
+    webViewPage.changeDriverContext();
+    webViewPage.sendText("I'm searching in Google.");
   }
 
-  private void changeDriverContext() {
-    this.driver.context((String) driver.getContextHandles().toArray()[1]);
-  }
 
   private void checkBoxAndVisitWebsite() {
     productPage.checkAndGoToWeb();
